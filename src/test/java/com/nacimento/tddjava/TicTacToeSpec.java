@@ -5,8 +5,7 @@ import com.nascimento.tddjava.TicTacToe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TicTacToeSpec {
 
@@ -14,6 +13,7 @@ public class TicTacToeSpec {
 
    @BeforeEach
    public final void before(){
+      TicTacToe.modeIA = false;
       ticTacToe = new TicTacToe();
    }
 
@@ -113,12 +113,11 @@ public class TicTacToeSpec {
 
    @Test
    public void givenDefineModeAIWhenNextPlayerThenX(){
-      ticTacToe.play(1,1, "USER");
-      ticTacToe.printBoard();
+      TicTacToe.modeIA = true;
+      String retorno = ticTacToe.play(1,1, "USER");
       assertEquals('X', ticTacToe.nextPlayer());
+      assertTrue(retorno.equals("No winner") || retorno.equals("The result is draw") || retorno.contains("is the winner"));
    }
-
-
 
 
 

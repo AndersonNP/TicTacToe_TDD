@@ -7,7 +7,7 @@ public class TicTacToe {
     private final Character[][] board = {{'\0','\0','\0'},{'\0','\0','\0'},{'\0','\0','\0'}};
     private Character lastPlayer = '\0';
     private static final int SIZE = 3;
-
+    public static boolean modeIA = false;
 
     public String play(int x, int y, String player) {
 
@@ -23,7 +23,7 @@ public class TicTacToe {
             return "The result is draw";
         }
 
-        if (player.equals("USER")) {
+        if (player.equals("USER") && modeIA) {
             return playAI();
         }
 
